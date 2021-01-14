@@ -16,7 +16,7 @@ exports.write = write
 var ALLOW = { dot: true }
 
 function read (globs, options) {
-  if (!Array.isArray(globs)) globs = [globs] 
+  if (!Array.isArray(globs)) globs = [globs]
   if (!options) options = {}
   const cwd = options.cwd || process.cwd()
   const stream_mode = options.stream !== undefined && options.stream
@@ -130,7 +130,7 @@ function read (globs, options) {
           cb(true)
         })
       }
-      file.data = data_stream  
+      file.data = data_stream
       // console.log(pending)
       done(null, file)
       pending--
@@ -139,7 +139,7 @@ function read (globs, options) {
       readFile(base ? join(base, path) : path, (err, buf) => {
         if (err) return done(err)
         file.data = buf
-        done(null, file)
+        done(null, file.data)
         pending--
         if (!pending) files.end()
       })
